@@ -4,4 +4,18 @@ label {
 
 .card {
     margin: 0px 40px;
+    background-color: #ffffff;
+    color: #000000;
+}
+
+input {
+    background: none;
+    color: #000000;
+    border-color: #000000;
+}
+
+textarea {
+    background: none;
+    color: #000000;
+    border-color: #000000;
 }
