@@ -3,3 +3,12 @@
         <h5 class="card-title text-center">Não há compromissos para mostrar</h5>
     </div>
 </div>
+<div *ngFor="let cita of listadoCitas" class="card mb-2">
+    <div class="card-body">
+        <p class="card-text"><span>Nome: </span> {{ cita.nome }} </p>
+        <p class="card-text"><span>Data: </span> {{ cita.data }} </p>
+        <p class="card-text"><span>Hora: </span> {{ cita.hora }} </p>
+        <p class="card-text"><span>Sintomas: </span> {{ cita.sintomas }} </p>
+        <button style="width: 100%;" class="btn btn-danger btn-block">ELIMINAR</button>
+    </div>
+</div>
