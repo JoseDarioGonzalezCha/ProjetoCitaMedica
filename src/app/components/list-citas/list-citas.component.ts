@@ -10,16 +10,15 @@ export class ListCitasComponent implements OnInit {
 /* @Input() listadoCitas: any;
   @Output() deleteCita = new EventEmitter<number>() ; */
 
-  Citas: any = [];
+  citas: any = [];
 
   constructor(private crudService: CrudService) { }
 
   ngOnInit(): void {
     this.crudService.getCitas().subscribe(res => {
-      console.log(res)
-      this.Citas = res;
-      }
-    );
+      this.citas = res;
+      }, err => console.error(err)
+      );
   }
 
  /*  delete(id:any, n:any) {

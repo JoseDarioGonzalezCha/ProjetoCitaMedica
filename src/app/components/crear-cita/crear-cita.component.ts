@@ -16,10 +16,10 @@ export class CrearCitaComponent implements OnInit {
   hora = '';
   sintomas = ''; 
 
-  formularioIncorrecto = false;
+ formularioIncorrecto = false;
   @Output() nuevaCita = new EventEmitter<any>(); // decorador @Output para enviar "CITA" ao pai, por meio da classe EventEmiter, passando um objeto do tipo eny.
  
-
+ 
   constructor( private router: Router, private cruidService: CrudService) { 
     
   }
@@ -28,7 +28,7 @@ export class CrearCitaComponent implements OnInit {
   }
 
     //Validação que verifica se todos os campos estão preenchidos
-  agregarCita() {
+    agregarCita() {
     if(this.nome == '' || this.data == '' || this.hora == '' || this.sintomas == ''){
       this.formularioIncorrecto = true;
       return;
@@ -53,6 +53,6 @@ export class CrearCitaComponent implements OnInit {
       this.data = '';
       this.hora = '';
       this.sintomas = '';
-  }
+  } 
 
 }
