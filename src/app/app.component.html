@@ -1,4 +1,4 @@
-<div class="container pt-3">
+<!-- <div class="container pt-3">
   <div class="text-center tituloClass">Consulta Médica</div>
   <div class="row mt-3">
     <div class="col-lg-6">
@@ -8,4 +8,24 @@
       <app-list-citas [listadoCitas]="listCitas" (deleteCita)="eliminarCitaListado($event)"></app-list-citas>
     </div>
   </div>
+</div>
+ -->
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container">
+    <a class="navbar-brand">Consulta Médica</a>
+    <div id="navbarNav" class="collapse navbar-collapse">
+      <ul class="navbar-nav ml-auto ">
+        <li class="nav-item">
+          <a class="nav-link" routerLinkActive="active" routerLink="/crear-cita">Crear Cita</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLinkActive="active" routerLink="/list-citas">Listar Cita</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<div class="container pt-4">
+  <router-outlet></router-outlet>
 </div>

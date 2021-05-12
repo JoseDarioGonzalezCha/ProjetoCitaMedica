@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { CrudService } from './../../service/crud.service';
 
 @Component({
   selector: 'app-list-citas',
@@ -6,16 +7,23 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
   styleUrls: ['./list-citas.component.css']
 })
 export class ListCitasComponent implements OnInit {
-  @Input() listadoCitas: any;
-  @Output() deleteCita = new EventEmitter<number>();
+/* @Input() listadoCitas: any;
+  @Output() deleteCita = new EventEmitter<number>() ; */
 
-  constructor() { }
+  citas: any = [];
+
+  constructor(private crudService: CrudService) { }
 
   ngOnInit(): void {
+    this.crudService.getCitas().subscribe(res => {
+      this.citas = res;
+      }, err => console.error(err)
+      );
   }
 
-  eliminarCita(index: number) {
+  /* sin conexion
+   eliminarCita(index: number) {
     this.deleteCita.emit(index);
-  }
+  } */
 
 }
