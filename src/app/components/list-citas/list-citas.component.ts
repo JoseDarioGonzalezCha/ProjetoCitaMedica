@@ -7,18 +7,19 @@ import { CrudService } from './../../service/crud.service';
   styleUrls: ['./list-citas.component.css']
 })
 export class ListCitasComponent implements OnInit {
-/*   @Input() listadoCitas: any;
-  @Output() deleteCita = new EventEmitter<number>() ;*/
+/* @Input() listadoCitas: any;
+  @Output() deleteCita = new EventEmitter<number>() ; */
 
-  Citas:any = [];
+  Citas: any = [];
 
   constructor(private crudService: CrudService) { }
 
   ngOnInit(): void {
-    this.crudService.GetCitas().subscribe(res => {
+    this.crudService.getCitas().subscribe(res => {
       console.log(res)
       this.Citas = res;
-    });
+      }
+    );
   }
 
  /*  delete(id:any, n:any) {

@@ -10,21 +10,20 @@ import { Cita } from './cita'
 export class CrudService {
 
   //Node API
- Api: 'http://localhost:8000/citas';
+ Api: 'http://localhost:8080/citas';
 
-  
 
   constructor(private httpClient: HttpClient) { }
 
   getCitas(){
-    return this.httpClient.get(`${this.Api}/citas`);
+    return this.httpClient.get(`${this.Api}`);
   }
 
   getCita(id: string){
     return this.httpClient.get(`${this.Api}/citas/${id}`);
   }
 
-  saveCita(cita: Cita){
+  createCita(cita: Cita){
     return this.httpClient.post(`${this.Api}/citas`,cita);
   }
 
@@ -32,14 +31,10 @@ export class CrudService {
     return this.httpClient.delete(`${this.Api}/citas/${id}`);
   }
 
+  updateCita(id: string, updateCita: Cita): Observable<Cita> {
+    return this.httpClient.put(`${this.Api}/citas/${id}`, updateCita);
+
+  }
 
 
-
-  // AddBook(data: Book): Observable<any> {}
-
-
-  /* deleteCitas(id:any): Observable<any>{
-    let Api_url = `${this.Api}/delete-cita/${id}`;
-    return this.httpClient.delete(Api_url, {headers})
-  } */
 }

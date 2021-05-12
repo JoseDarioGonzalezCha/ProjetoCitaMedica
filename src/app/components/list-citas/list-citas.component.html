@@ -5,11 +5,11 @@
 </div>
 <div *ngFor="let cita of Citas; let i = index" class="card mb-2">
     <div class="card-body">
-        <h4 class="card-title text-center"><span> {{ citas.nome }}, sua cita está pronta.</span></h4>
-        <p class="card-text"><span>Nome: </span> {{ citas.nome }} </p>
-        <p class="card-text"><span>Data: </span> {{ citas.data }} </p>
-        <p class="card-text"><span>Hora: </span> {{ citas.hora }} </p>
-        <p class="card-text"><span>Sintomas: </span> {{ citas.sintomas }} </p>
+        <h4 class="card-title text-center"><span> {{ Cita.id }}, sua cita está pronta.</span></h4>
+        <p class="card-text"><span>Nome: </span> {{ Cita.nome }} </p>
+        <p class="card-text"><span>Data: </span> {{ Cita.data }} </p>
+        <p class="card-text"><span>Hora: </span> {{ Cita.hora }} </p>
+        <p class="card-text"><span>Sintomas: </span> {{ Cita.sintomas }} </p>
         <button style="width: 50%;" class="btn btn-danger btn-block" (click)="eliminarCita(i)" >Eliminar</button>
         <button style="width: 50%;" class="btn btn-danger btn-block" (click)="editarCita(i)" >Editar</button>
     </div>
