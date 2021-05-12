@@ -16,7 +16,8 @@ export class ListCitasComponent implements OnInit {
 
   ngOnInit(): void {
     this.crudService.getCitas().subscribe(res => {
-      this.citas = res;
+      console.log(res)
+      this.citas = res.Citas;
       }, err => console.error(err)
       );
   }
