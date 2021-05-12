@@ -1,10 +1,8 @@
 export interface Cita {
     id?: number;
     Name?: string;
-    date?: Date;
+    date?: string;
     time?: string;
     description?: string;
-    // createdAt?: Date;
-    // updatedAt?: Date;
 
 }

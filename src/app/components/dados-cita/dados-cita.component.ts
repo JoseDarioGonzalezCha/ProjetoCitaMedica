@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { CrudService } from './../../service/crud.service'
+import { from } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dados-cita',
@@ -7,7 +10,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DadosCitaComponent implements OnInit {
 
-  constructor() { }
+  constructor( private router: Router, private cruidService: CrudService) { }
 
   ngOnInit(): void {
   }

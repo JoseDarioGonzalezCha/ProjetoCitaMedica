@@ -1,7 +1,8 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { CrudService } from './../../service/crud.service';
-import {FormGroup, FormBuilder } from '@angular/forms';
+import {FormGroup } from '@angular/forms';
+import { Cita } from 'src/app/service/cita';
 
 @Component({
   selector: 'app-crear-cita',
@@ -10,11 +11,13 @@ import {FormGroup, FormBuilder } from '@angular/forms';
 })
 export class CrearCitaComponent implements OnInit {
   
+  cita: Cita = {
+    Name: '',
+    date: '',
+    time: '',
+    description: '', 
+  };
 
-  nome = '';
-  data = '';
-  hora = '';
-  sintomas = ''; 
 
  formularioIncorrecto = false;
   @Output() nuevaCita = new EventEmitter<any>(); // decorador @Output para enviar "CITA" ao pai, por meio da classe EventEmiter, passando um objeto do tipo eny.
@@ -26,8 +29,15 @@ export class CrearCitaComponent implements OnInit {
 
   ngOnInit(): void {
   }
+    createNewCita() {
+     this.cruidService.createCita(this.cita)
+      .subscribe( res => {
+        console.log(res);
+      }, err => console.error(err)
 
-    //Validação que verifica se todos os campos estão preenchidos
+      )
+    }
+   /*  //Validação que verifica se todos os campos estão preenchidos
     agregarCita() {
     if(this.nome == '' || this.data == '' || this.hora == '' || this.sintomas == ''){
       this.formularioIncorrecto = true;
@@ -53,6 +63,6 @@ export class CrearCitaComponent implements OnInit {
       this.data = '';
       this.hora = '';
       this.sintomas = '';
-  } 
+  }  */
 
 }
