@@ -1,5 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-
+import { Router } from '@angular/router';
+import { CrudService } from './../../service/crud.service';
+import {FormGroup, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-crear-cita',
@@ -7,16 +9,20 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
   styleUrls: ['./crear-cita.component.css']
 })
 export class CrearCitaComponent implements OnInit {
+  
+
   nome = '';
   data = '';
   hora = '';
-  sintomas = '';
+  sintomas = ''; 
 
   formularioIncorrecto = false;
   @Output() nuevaCita = new EventEmitter<any>(); // decorador @Output para enviar "CITA" ao pai, por meio da classe EventEmiter, passando um objeto do tipo eny.
+ 
 
-
-  constructor() { }
+  constructor( private router: Router, private cruidService: CrudService) { 
+    
+  }
 
   ngOnInit(): void {
   }
