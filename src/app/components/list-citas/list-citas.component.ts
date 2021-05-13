@@ -22,6 +22,14 @@ export class ListCitasComponent implements OnInit {
       );
   }
 
+  deleteCita(id) {
+    //console.log(id)
+    this.crudService.deleteCita(id).subscribe(res => {
+      console.log(res)
+    }, err => console.error(err)
+    );
+  }
+
   /* sin conexion
    eliminarCita(index: number) {
     this.deleteCita.emit(index);
