@@ -15,11 +15,12 @@ export class CrearCitaComponent implements OnInit {
     Name: '',
     date: '',
     time: '',
-    description: '', 
+    description: '',
   };
+  
+  formularioIncorrecto = false;
 
 
- formularioIncorrecto = false;
   @Output() nuevaCita = new EventEmitter<any>(); // decorador @Output para enviar "CITA" ao pai, por meio da classe EventEmiter, passando um objeto do tipo eny.
  
  
