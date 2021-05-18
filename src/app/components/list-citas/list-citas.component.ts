@@ -26,7 +26,7 @@ export class ListCitasComponent implements OnInit {
       );
   }
 
-  deleteCita(id: string) {
+  deleteCita(id) {
     //console.log(id)
     this.crudService.deleteCita(id).subscribe(res => {
       console.log(res);

@@ -37,7 +37,6 @@ export class CrudService {
 
   updateCita(id: string, updateCita: Cita): Observable<Cita> {
     return this.httpClient.put(`${this.Api}/citas/${id}`, updateCita);
-
   }
 
 
