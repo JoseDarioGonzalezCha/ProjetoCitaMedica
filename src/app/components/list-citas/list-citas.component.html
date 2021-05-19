@@ -19,7 +19,7 @@
                         
                 <button class="btn btn-danger btn-block mb-2" (click)="deleteCita(cita.id)" >Eliminar</button>
                             
-                <button style="width: 100%;" type="button" class="btn btn-primary btn-block" (click)="editarCita(i)" >Editar</button>
+                <button style="width: 100%;" type="button" class="btn btn-primary btn-block" routerLink="/dados-cita/{{cita.id}}" >Editar</button>
         
             </div>
         </div>
