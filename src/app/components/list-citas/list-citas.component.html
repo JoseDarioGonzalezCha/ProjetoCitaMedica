@@ -1,16 +1,34 @@
-<div class="card">
+
+
+<!-- <div *ngIf="listadoCitas.length === 0" class="card" style="width: 50%;">
     <div class="card-body">
         <h5 class="card-title text-center">Não há compromissos para mostrar</h5>
     </div>
-</div>
-<div *ngFor="let cita of citas" class="card mb-2">
-    <div class="card-body">
-        <h4 class="card-title text-center"><span> {{ cita.Name }}, sua cita está pronta.</span></h4>
-        <p class="card-text"><span>Nome: </span> {{ cita.Name }} </p>
-        <p class="card-text"><span>Data: </span> {{ cita.date }} </p>
-        <p class="card-text"><span>Hora: </span> {{ cita.time }} </p>
-        <p class="card-text"><span>Sintomas: </span> {{ cita.description }} </p>
-        <button style="width: 50%;" class="btn btn-danger btn-block" (click)="eliminarCita(i)" >Eliminar</button>
-        <button style="width: 50%;" class="btn btn-danger btn-block" (click)="editarCita(i)" >Editar</button>
+</div> -->
+
+<div class="container">
+    <div class="row">
+        <div *ngFor="let cita of citas" class="card md-3 mb-2" style="width: 33%;">
+            <div class="card-body">
+                <h4 class="card-title text-center"><span> {{ cita.Name }}, sua cita está pronta.</span></h4>
+                <p class="card-text"><span>Nome: </span> {{ cita.Name }} </p>
+                <p class="card-text"><span>Data: </span> {{ cita.date }} </p>
+                <p class="card-text"><span>Hora: </span> {{ cita.time }} </p>
+                <p class="card-text"><span>Sintomas: </span> {{ cita.description }} </p>
+                
+                        
+                <button class="btn btn-danger btn-block mb-2" (click)="deleteCita(cita.id)" >Eliminar</button>
+                            
+                <button style="width: 100%;" type="button" class="btn btn-primary btn-block" routerLink="/dados-cita/{{cita.id}}" >Editar</button>
+        
+            </div>
+        </div>
+    
     </div>
 </div>
+
+    
+  
+
+    <!--  -->
+    

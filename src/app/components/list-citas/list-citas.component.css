@@ -2,6 +2,12 @@
     margin: 0px 40px;
     background-color: #ffffff;
     color: #000000;
+    margin: 0 auto; 
+    float: none; 
+    /* display: flex;
+    flex-direction: row;
+    justify-content:space-between;
+    align-content: flex-start */
 }
 
 span {

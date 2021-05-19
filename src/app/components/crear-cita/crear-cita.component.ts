@@ -15,12 +15,13 @@ export class CrearCitaComponent implements OnInit {
     Name: '',
     date: '',
     time: '',
-    description: '', 
+    description: '',
   };
+  
+  formularioIncorrecto = false;
 
 
- formularioIncorrecto = false;
-  @Output() nuevaCita = new EventEmitter<any>(); // decorador @Output para enviar "CITA" ao pai, por meio da classe EventEmiter, passando um objeto do tipo eny.
+  // @Output() nuevaCita = new EventEmitter<any>(); // decorador @Output para enviar "CITA" ao pai, por meio da classe EventEmiter, passando um objeto do tipo eny.
  
  
   constructor( private router: Router, private cruidService: CrudService) { 
@@ -28,13 +29,15 @@ export class CrearCitaComponent implements OnInit {
   }
 
   ngOnInit(): void {
+   
   }
-    createNewCita() {
+    
+  createNewCita() {
      this.cruidService.createCita(this.cita)
       .subscribe( res => {
         console.log(res);
+        this.router.navigate(['/list-citas']);
       }, err => console.error(err)
-
       )
     }
    /*  //Validação que verifica se todos os campos estão preenchidos
@@ -59,10 +62,10 @@ export class CrearCitaComponent implements OnInit {
 
   //Reset os campos após o envio das informações
   resetCampos() {
-      this.nome = '';
-      this.data = '';
-      this.hora = '';
-      this.sintomas = '';
+      this.Name = '';
+      this.date = '';
+      this.time = '';
+      this. description = '';
   }  */
 
 }

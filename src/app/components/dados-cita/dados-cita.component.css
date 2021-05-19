@@ -1,0 +1,23 @@
+label {
+    font-weight: 600;
+}
+
+.card {
+    margin: 0px 40px;
+    background-color: #ffffff;
+    color: #000000;
+    margin: 0 auto; 
+    float: none;  
+}
+
+input {
+    background: none;
+    color: #000000;
+    border-color: #000000;
+}
+
+textarea {
+    background: none;
+    color: #000000;
+    border-color: #000000;
+} 

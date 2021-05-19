@@ -7,18 +7,32 @@ import { CrudService } from './../../service/crud.service';
   styleUrls: ['./list-citas.component.css']
 })
 export class ListCitasComponent implements OnInit {
-/* @Input() listadoCitas: any;
-  @Output() deleteCita = new EventEmitter<number>() ; */
+@Input() listadoCitas: any; // Motra mensagem quando não tem registro nele componente.
+/*   @Output() deleteCita = new EventEmitter<number>() ; */
 
   citas: any = [];
 
   constructor(private crudService: CrudService) { }
 
   ngOnInit(): void {
+   this.getCita();
+  }
+
+  getCita(){
     this.crudService.getCitas().subscribe(res => {
-      this.citas = res;
+      console.log(res)
+      this.citas = res.Citas;
       }, err => console.error(err)
       );
+  }
+
+  deleteCita(id) {
+    //console.log(id)
+    this.crudService.deleteCita(id).subscribe(res => {
+      console.log(res);
+      this.getCita();
+    }, err => console.log(err)
+    );
   }
 
   /* sin conexion

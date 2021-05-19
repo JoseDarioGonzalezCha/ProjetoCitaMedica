@@ -1,8 +1,10 @@
-<div class="card">
+<div class="card" style="width: 50%;">
     <div class="card-body">
         <h4 class="card-title text-center">Adicionar Cita</h4>
-        <div *ngIf="formularioIncorrecto" class="tex-center">
-        <span class="badge bg-danger">Todos os campos são obrigatorios</span>
+        <div *ngIf="formularioIncorrecto">
+            <div class="text-center">
+                <span class="badge bg-danger">Todos os campos são obrigatorios</span>
+            </div>
         </div>
         <form>
             <div class="form-group mb-3">

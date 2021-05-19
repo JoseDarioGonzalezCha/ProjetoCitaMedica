@@ -11,13 +11,14 @@ import { Cita } from './cita'
 export class CrudService {
 
   //Node API
- Api: 'http://localhost:8080/citas';
+  Api = 'http://localhost:8080';
 
 
   constructor(private httpClient: HttpClient) { }
 
   getCitas(){
-    return this.httpClient.get(`${this.Api}`);
+    console.log(this)
+  return this.httpClient.get<any>(`${this.Api}/citas`);
   }
 
   getCita(id: string){
@@ -25,6 +26,8 @@ export class CrudService {
   }
 
   createCita(cita: Cita){
+    console.log(this)
+    console.log(this.Api)
     return this.httpClient.post(`${this.Api}/citas`,cita);
   }
 
@@ -34,7 +37,6 @@ export class CrudService {
 
   updateCita(id: string, updateCita: Cita): Observable<Cita> {
     return this.httpClient.put(`${this.Api}/citas/${id}`, updateCita);
-
   }
 
 
