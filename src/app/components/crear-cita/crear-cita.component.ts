@@ -24,9 +24,7 @@ export class CrearCitaComponent implements OnInit {
   // @Output() nuevaCita = new EventEmitter<any>(); // decorador @Output para enviar "CITA" ao pai, por meio da classe EventEmiter, passando um objeto do tipo eny.
  
  
-  constructor( private router: Router, private cruidService: CrudService) { 
-    
-  }
+  constructor( private router: Router, private cruidService: CrudService) { }
 
   ngOnInit(): void {
    
