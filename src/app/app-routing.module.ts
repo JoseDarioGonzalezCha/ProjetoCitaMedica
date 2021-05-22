@@ -9,7 +9,7 @@ const Api_routes: Routes = [
     { path: '', pathMatch: 'full', redirectTo: 'crear-cita' },
     { path: 'list-citas', component: ListCitasComponent },
     { path: 'crear-cita', component: CrearCitaComponent },
-    { path: 'dados-cita/:id', component: DadosCitaComponent }
+    { path: 'edit-cita/:id', component: DadosCitaComponent }
 ];
 
 @NgModule({
