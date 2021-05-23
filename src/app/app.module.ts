@@ -28,7 +28,6 @@ import { DadosCitaComponent } from './components/dados-cita/dados-cita.component
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule
-    
   ],
   providers: [
     CrudService

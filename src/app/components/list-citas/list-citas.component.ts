@@ -15,6 +15,10 @@ export class ListCitasComponent implements OnInit {
   constructor(private crudService: CrudService) { }
 
   ngOnInit(): void {
+   this.getCita();
+  }
+
+  getCita(){
     this.crudService.getCitas().subscribe(res => {
       console.log(res)
       this.citas = res.Citas;
@@ -25,8 +29,9 @@ export class ListCitasComponent implements OnInit {
   deleteCita(id) {
     //console.log(id)
     this.crudService.deleteCita(id).subscribe(res => {
-      console.log(res)
-    }, err => console.error(err)
+      console.log(res);
+      this.getCita();
+    }, err => console.log(err)
     );
   }
 
