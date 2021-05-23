@@ -1,5 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { CrudService } from './../../service/crud.service';
 import {FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Cita } from 'src/app/service/cita';
@@ -27,23 +27,23 @@ export class CrearCitaComponent implements OnInit {
 
   formularioIncorrecto = true;
 
-  // @Output() nuevaCita = new EventEmitter<any>(); // decorador @Output para enviar "CITA" ao pai, por meio da classe EventEmiter, passando um objeto do tipo eny.
+  
  
- 
-  constructor( private router: Router, private cruidService: CrudService) { }
+  constructor( private router: Router, private cruidService: CrudService, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
-   
+  
   }
     
   createNewCita() {
-     this.cruidService.createCita(this.cita)
-      .subscribe( res => {
-        console.log(res);
-        this.router.navigate(['/list-citas']);
-      }, err => console.error(err)
-      )
-    }
+    
+  this.cruidService.createCita(this.cita)
+    .subscribe( res => {
+      console.log(res);
+      this.router.navigate(['/list-citas']);
+    }, err => console.error(err)
+    )
+
    /*  
 
     //Validação que verifica se todos os campos estão preenchidos
@@ -85,12 +85,7 @@ export class CrearCitaComponent implements OnInit {
     this.resetCampos()
   }
 
-  //Reset os campos após o envio das informações
-  resetCampos() {
-      this.Name = '';
-      this.date = '';
-      this.time = '';
-      this. description = '';
-  }  */
+
+
 
 }

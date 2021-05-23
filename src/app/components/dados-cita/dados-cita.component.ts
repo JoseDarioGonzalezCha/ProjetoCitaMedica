@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { CrudService } from './../../service/crud.service'
 import { Router, ActivatedRoute } from '@angular/router';
-import { FormGroup, FormBuilder } from '@angular/forms';
-
+import {  Cita } from './../../service/Cita'
+import { from } from 'rxjs';
 
 @Component({
   selector: 'app-dados-cita',
@@ -11,58 +11,48 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 })
 export class DadosCitaComponent implements OnInit {
 
-  obtenerId: any;
-  atualizarForm: FormGroup; 
 
+  atualCita: Cita = {
+    Name: '',
+    date: '',
+    time: '',
+    description: '',
+  };
+
+ 
   constructor( 
-    public formBuilder : FormBuilder,
+    
     private router: Router, 
     private cruidService: CrudService, 
-    private activatedRoute: ActivatedRoute,
-    ) { 
+    private activatedRoute: ActivatedRoute,) 
+    { }
 
-    this.obtenerId = this.activatedRoute.snapshot.paramMap.get('id');
-    console.log(this.obtenerId)
-
-    this.cruidService.getCita(this.obtenerId).subscribe(res => {
-      console.log(res)
-      this.atualizarForm.setValue({
-        Name: res['Name'],
-        date: res['date'],
-        time: res['time'],
-        description: res['description']
-      });
-
-    }); 
-
-    this.atualizarForm = this.formBuilder.group({
-        Name: [''],
-        date: [''],
-        time: [''],
-        description: ['']
-    })
-    console.log(this.atualizarForm.value)
-  }
   
-  ngOnInit(): void { }
-
-  onUpdateCita(): any {
-    this.cruidService.updateCita(this.obtenerId, this.atualizarForm.value)
-    .subscribe(() => {
-        console.log('data update'); 
-        this.router.navigateByUrl('/list-citas');
-      }, err => {
-        console.log(err);
-      });
-  } 
-  //mostra no console a cita mais no completa em formulario
- /*  if(params.id) {
-      this.cruidService.getCita(params.id)
+    ngOnInit(): void { 
+    const obtener = this.activatedRoute.snapshot.params;
+    if(obtener.id) {
+      this.cruidService.getCita(obtener.id)
       .subscribe(
         res => {
           console.log(res);
-          this.cita = res;
-        }, err => console.error(err) 
-      ) }  */ 
+          this.atualCita = res;
+        }, err => {
+          console.error(err)
+        } 
+      )
+    };
+  } 
 
+
+  updateCita(){
+    console.log(this.atualCita)
+    this.cruidService.updateCita(this.atualCita.id, this.atualCita)
+    .subscribe(
+      res => {
+        console.log(res);
+        this.router.navigate(['/list-citas']);
+      }, err => console.log(err)
+    )
+  }
+  
 }

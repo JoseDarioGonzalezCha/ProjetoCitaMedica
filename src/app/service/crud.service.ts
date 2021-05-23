@@ -22,7 +22,7 @@ export class CrudService {
   }
 
   getCita(id: string){
-    return this.httpClient.get(`${this.Api}/citas/${id}`);
+    return this.httpClient.get<any>(`${this.Api}/citas/${id}`);
   }
 
   createCita(cita: Cita){
@@ -35,7 +35,7 @@ export class CrudService {
     return this.httpClient.delete(`${this.Api}/citas/${id}`);
   }
 
-  updateCita(id: string, updateCita: Cita): Observable<Cita> {
+  updateCita(id: string|number, updateCita: Cita): Observable<Cita> {
     return this.httpClient.put(`${this.Api}/citas/${id}`, updateCita);
   }
 

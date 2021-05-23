@@ -35,9 +35,6 @@ export class ListCitasComponent implements OnInit {
     );
   }
 
-  /* sin conexion
-   eliminarCita(index: number) {
-    this.deleteCita.emit(index);
-  } */
+  
 
 }
