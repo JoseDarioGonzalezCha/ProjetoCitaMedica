@@ -12,12 +12,17 @@ import { from } from 'rxjs';
 export class DadosCitaComponent implements OnInit {
 
 
-  atualCita: Cita = {
+  atualCita: any = {
     Name: '',
     date: '',
     time: '',
     description: '',
   };
+
+  onSubmit(form) {
+    console.log(form); 
+    console.log(this.atualCita);
+  }
 
  
   constructor( 
