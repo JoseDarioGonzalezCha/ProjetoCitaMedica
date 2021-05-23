@@ -1,7 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { CrudService } from './../../service/crud.service';
-import {FormGroup } from '@angular/forms';
+import {FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Cita } from 'src/app/service/cita';
 
 @Component({
@@ -9,7 +9,14 @@ import { Cita } from 'src/app/service/cita';
   templateUrl: './crear-cita.component.html',
   styleUrls: ['./crear-cita.component.css']
 })
+
 export class CrearCitaComponent implements OnInit {
+
+  onSubmit(form) {
+    console.log(form);
+  }
+
+  //formulario: FormGroup;
   
   cita: Cita = {
     Name: '',
@@ -17,9 +24,8 @@ export class CrearCitaComponent implements OnInit {
     time: '',
     description: '',
   };
-  
-  formularioIncorrecto = false;
 
+  formularioIncorrecto = true;
 
   
  
@@ -30,12 +36,53 @@ export class CrearCitaComponent implements OnInit {
   }
     
   createNewCita() {
+    
   this.cruidService.createCita(this.cita)
     .subscribe( res => {
       console.log(res);
       this.router.navigate(['/list-citas']);
     }, err => console.error(err)
     )
+
+   /*  
+
+    //Validação que verifica se todos os campos estão preenchidos
+  // agregarCita() {
+  //   if(this.Name == '' || this.date == '' || this.time == '' || this.description == ''){
+  //     this.formularioIncorrecto = true;
+  //     return;
+  //   }
+  //   this.formularioIncorrecto = false;
+
+// validarCita() {
+  //   if(this.cita == '') {
+  //     this.formularioIncorrecto = true;
+  //     console.log(this.cita)
+  //     return;
+  //   }
+  //   this.formularioIncorrecto = false;
+  // }
+
+    
+// validarCita() {
+  //   if(this.cita == '') {
+  //     this.formularioIncorrecto = true;
+  //     console.log(this.cita)
+  //     return;
+  //   }
+  //   this.formularioIncorrecto = false;
+  // }
+
+    //Criamos um objeto para enviar ao pai
+    const CITA = {
+      nome: this.nome,
+      data: this.data,
+      hora: this.hora,
+      sintomas: this.sintomas
+    }
+    console.log(CITA);
+    this.nuevaCita.emit(CITA);
+    this.resetCampos()
   }
 
 

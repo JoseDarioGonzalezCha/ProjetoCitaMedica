@@ -1,35 +1,57 @@
+<!-- *ngIf="formularioIncorrecto" -->
+
 <div class="card" style="width: 50%;">
-    <div class="card-body">
+    <div  class="card-body">
         <h4 class="card-title text-center">Adicionar Cita</h4>
-        <div *ngIf="formularioIncorrecto">
-            <div class="text-center">
+        
+            <!-- <div class="text-center">
                 <span class="badge bg-danger">Todos os campos são obrigatorios</span>
-            </div>
-        </div>
-        <form>
+            </div> -->
+         
+        <form #formulario="ngForm" (ngSubmit)="onSubmit(formulario)" > <!-- [formGroup]="formulario" -->
             <div class="form-group mb-3">
                 <label for="nombre">Nome</label>
-                <input type="text" name="Name"
-                [(ngModel)]="cita.Name" class="form-control" placeholder="Insira seu nome">
+                <input type="text" name="name"
+                 class="form-control" [(ngModel)]="cita.Name" placeholder="Insira seu nome" required #Name="ngModel">
+                
+                 <div *ngIf=" !Name.valid && Name.touched" class="alert alert-danger d-flex align-items-center" role="alert">
+                   <span> Nome é obrigatorio!</span>
+                 </div>
+                  <!--formControlName="Name"  -->
+                 <!-- [(ngModel)]="cita.Name" -->
             </div>
 
             <div class="form-group mb-3">
                 <label for="fecha">Data</label>
                 <input type="date" name="date"
-                [(ngModel)]="cita.date" class="form-control">
+                [(ngModel)]="cita.date" class="form-control" required #date="ngModel">
+               
+                <div *ngIf=" !date.valid && date.touched" class="alert alert-danger d-flex align-items-center" role="alert">
+                    <span>A data é obrigatória</span>
+                </div>
             </div>
 
             <div class="form-group mb-3">
                 <label for="hora">Hora</label>
                 <input type="time" name="time"
-                [(ngModel)]="cita.time" class="form-control">
+                [(ngModel)]="cita.time" class="form-control" required #time="ngModel">
+               
+                <div *ngIf=" !time.valid && time.touched" class="alert alert-danger d-flex align-items-center" role="alert">
+                    <span>A hora é obrigatória</span>
+                </div>
             </div>
 
             <div class="form-group mb-3">
                 <label for="sintomas">Sintomas</label>
-                <textarea name="description" [(ngModel)]="cita.description"  rows="3" class="form-control" placeholder="Insira os sintomas que você está apresentando"></textarea>
+                <textarea name="description" [(ngModel)]="cita.description"  rows="3" class="form-control" placeholder="Insira os sintomas que você está apresentando" required #description="ngModel"></textarea>
+               
+                <div *ngIf=" !description.valid && description.touched" class="alert alert-danger d-flex align-items-center" role="alert">
+                <span>Os sintomas são obrigatórios</span>
+                </div>
             </div>
-            <button style="width: 100%;" (click)="createNewCita()" class="btn btn-primary btn-block">Adicionar Cita</button>
+            
+            <button type="submit" style="width: 100%;" (click)="createNewCita()" (ngSubmit)="onSubmit" class="btn btn-primary btn-block" [disabled]="!formulario.valid">Adicionar Cita</button>
+
         </form>
     </div>
 </div>
