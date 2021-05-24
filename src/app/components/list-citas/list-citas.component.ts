@@ -1,5 +1,7 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { CrudService } from './../../service/crud.service';
+import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
+import { Cita } from 'src/app/service/cita';
 
 @Component({
   selector: 'app-list-citas',
@@ -7,12 +9,16 @@ import { CrudService } from './../../service/crud.service';
   styleUrls: ['./list-citas.component.css']
 })
 export class ListCitasComponent implements OnInit {
-@Input() listadoCitas: any; // Motra mensagem quando não tem registro nele componente.
-/*   @Output() deleteCita = new EventEmitter<number>() ; */
+
+  deleteModalRef: BsModalRef;
+  @ViewChild('deleteModal') deleteModal;
 
   citas: any = [];
 
-  constructor(private crudService: CrudService) { }
+  citaSelecionada: any = [];
+
+  constructor(private crudService: CrudService, 
+              private modalService: BsModalService) { }
 
   ngOnInit(): void {
    this.getCita();
@@ -35,6 +41,23 @@ export class ListCitasComponent implements OnInit {
     );
   }
 
-  
+  onDelete(citas) {
+    this.citaSelecionada = citas;
+    this.deleteModalRef = this.modalService.show(this.deleteModal, { class: 'modal-sm'});
+  }
 
+  onConfirmDelete() {
+    this.crudService.deleteCita(this.citaSelecionada.id)
+    .subscribe(
+      success => {
+        this.getCita();
+        this.deleteModalRef.hide();
+      },
+    );
+  }
+
+  onDeclineDelete() {
+    this.deleteModalRef.hide();
+  }
+  
 }

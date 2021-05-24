@@ -12,7 +12,7 @@ import { from } from 'rxjs';
 export class DadosCitaComponent implements OnInit {
 
 
-  atualCita: any = {
+  atualCita: Cita = {
     Name: '',
     date: '',
     time: '',

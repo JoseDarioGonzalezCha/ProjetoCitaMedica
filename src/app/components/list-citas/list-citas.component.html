@@ -17,18 +17,22 @@
                 <p class="card-text"><span>Sintomas: </span> {{ cita.description }} </p>
                 
                         
-                <button class="btn btn-danger btn-block mb-2" (click)="deleteCita(cita.id)" >Eliminar</button>
+                <button class="btn btn-danger btn-block mb-2" (click)="deleteCita(cita.id)" (click)="onDelete(cita)">Eliminar</button>
                             
                 <button style="width: 100%;" type="button" class="btn btn-primary btn-block" routerLink="/edit-cita/{{cita.id}}" >Editar</button>
-        
             </div>
         </div>
-    
     </div>
 </div>
 
-    
-  
+<ng-template #deleteModal>
+    <div class="modal-body text-center">
+      <p>Tem certeza que deseja cancelar sua cita?</p>
+      <button type="button" class="btn btn-default" (click)="onConfirmDelete()" >Yes</button>
+      <button type="button" class="btn btn-primary" (click)="onDeclineDelete()" >No</button>
+    </div>
+  </ng-template>
+
 
     <!--  -->
     
