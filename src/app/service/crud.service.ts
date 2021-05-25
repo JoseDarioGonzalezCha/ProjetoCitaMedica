@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
-
+import { catchError } from 'rxjs/operators';
+import { throwError as ObservableThrowError } from 'rxjs';
 import { Cita } from './cita'
 
 
@@ -18,7 +19,10 @@ export class CrudService {
 
   getCitas(){
     console.log(this)
-  return this.httpClient.get<any>(`${this.Api}/citas`);
+    return this.httpClient.get<any>(`${this.Api}/citas`)
+        .pipe(
+          catchError(this.errorHandler)
+        )
   }
 
   getCita(id: string){
@@ -28,7 +32,10 @@ export class CrudService {
   createCita(cita: Cita){
     console.log(this)
     console.log(this.Api)
-    return this.httpClient.post(`${this.Api}/citas`,cita);
+    return this.httpClient.post(`${this.Api}/citas`,cita)
+        .pipe(
+          catchError(this.errorHandler)
+        )
   }
 
   deleteCita(id: string) {
@@ -39,5 +46,9 @@ export class CrudService {
     return this.httpClient.put(`${this.Api}/citas/${id}`, updateCita);
   }
 
+
+  errorHandler(error: HttpErrorResponse){
+    return ObservableThrowError(error.message)
+  }
 
 }
