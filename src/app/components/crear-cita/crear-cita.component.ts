@@ -40,6 +40,6 @@ export class CrearCitaComponent implements OnInit {
     .subscribe( res => {
       console.log(res);
       this.router.navigate(['/list-citas']);
-    }, err => this.errorMessage = err
+    }, error => this.errorMessage = error
     )
   }}

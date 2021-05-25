@@ -52,7 +52,7 @@ export class ListCitasComponent implements OnInit {
     this.crudService.deleteCita(citas).subscribe(res => {
       console.log(res);
       this.getCita();
-    }, err => console.log(err)
+    }, error => console.log(error)
     );
   }
 

@@ -12,6 +12,7 @@ import { from } from 'rxjs';
 })
 export class DadosCitaComponent implements OnInit {
 
+  errorMessage = '';
 
   atualCita: Cita = {
     Name: '',
@@ -40,8 +41,8 @@ export class DadosCitaComponent implements OnInit {
         res => {
           console.log(res);
           this.atualCita = res;
-        }, err => {
-          console.error(err)
+        }, error => {
+          console.error(error)
         } 
       )
     };
@@ -55,7 +56,7 @@ export class DadosCitaComponent implements OnInit {
       res => {
         console.log(res);
         this.router.navigate(['/list-citas']);
-      }, err => console.log(err)
+      },  error => this.errorMessage = error
     )
   }
   

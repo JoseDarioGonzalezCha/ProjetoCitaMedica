@@ -43,7 +43,10 @@ export class CrudService {
   }
 
   updateCita(id: string|number, updateCita: Cita): Observable<Cita> {
-    return this.httpClient.put(`${this.Api}/citas/${id}`, updateCita);
+    return this.httpClient.put(`${this.Api}/citas/${id}`, updateCita)
+        .pipe(
+          catchError(this.errorHandler)
+        )
   }
 
 
