@@ -17,8 +17,6 @@
                  <div *ngIf=" !Name.valid && Name.touched" class="badge bg-danger">
                    <span> Nome é obrigatorio!</span>
                  </div>
-                  <!--formControlName="Name"  -->
-                 <!-- [(ngModel)]="cita.Name" -->
             </div>
 
             <div class="form-group mb-3">
@@ -50,8 +48,11 @@
                 </div>
             </div>
             
-            <button type="submit" style="width: 100%;" (click)="createNewCita()" (ngSubmit)="onSubmit" class="btn btn-primary btn-block" [disabled]="!formulario.valid">Adicionar Cita</button>
-
+            <button type="submit" style="width: 100%;" (click)="createNewCita()" (ngSubmit)="onSubmit" class="btn btn-primary btn-block" [disabled]="!formulario.valid" >Adicionar Cita</button>
+            
         </form>
+    </div>
+    <div class="alert alert-light" role="alert">
+        <p>{{errorMessage}}</p>
     </div>
 </div>

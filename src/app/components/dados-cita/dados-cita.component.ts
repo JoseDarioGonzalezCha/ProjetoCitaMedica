@@ -4,6 +4,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import {  Cita } from './../../service/Cita'
 import { from } from 'rxjs';
 
+
 @Component({
   selector: 'app-dados-cita',
   templateUrl: './dados-cita.component.html',
@@ -24,9 +25,7 @@ export class DadosCitaComponent implements OnInit {
     console.log(this.atualCita);
   }
 
- 
   constructor( 
-    
     private router: Router, 
     private cruidService: CrudService, 
     private activatedRoute: ActivatedRoute,) 

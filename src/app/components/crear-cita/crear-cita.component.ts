@@ -27,7 +27,7 @@ export class CrearCitaComponent implements OnInit {
 
   formularioIncorrecto = true;
 
-  
+  errorMessage = '';
  
   constructor( private router: Router, private cruidService: CrudService, private activatedRoute: ActivatedRoute) { }
 
@@ -36,11 +36,10 @@ export class CrearCitaComponent implements OnInit {
   }
     
   createNewCita() {
-    
   this.cruidService.createCita(this.cita)
     .subscribe( res => {
       console.log(res);
       this.router.navigate(['/list-citas']);
-    }, err => console.error(err)
+    }, err => this.errorMessage = err
     )
   }}

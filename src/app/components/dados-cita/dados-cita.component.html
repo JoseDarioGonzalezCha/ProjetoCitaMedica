@@ -12,7 +12,7 @@
               <div *ngIf=" !Name.valid && Name.touched" class="badge bg-danger">
                 <span> Nome é obrigatorio!</span>
               </div>
-
+              
           </div>
 
           <div class="form-group mb-3">
@@ -41,7 +41,7 @@
               <textarea name="description" [(ngModel)]="atualCita.description"  rows="3" class="form-control" required #description="ngModel"></textarea>
 
               <div *ngIf=" !description.valid && description.touched" class="badge bg-danger">
-                <span> Sintomas é Sintomas!</span>
+                <span> Sintomas é obrigatorio!</span>
               </div>
           </div>
           <button type="submit" style="width: 100%;" (click)="updateCita()" class="btn btn-primary btn-block" [disabled]="!f.valid">Editar Cita</button>

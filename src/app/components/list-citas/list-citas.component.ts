@@ -19,18 +19,20 @@ export class ListCitasComponent implements OnInit {
   citas: any = [];
 
 
+  errorMessage = '';
+
   constructor(private crudService: CrudService, 
               private modalService: BsModalService) {}
 
   ngOnInit(): void {
-   this.getCita();
+  this.getCita();
   }
 
   getCita(){
     this.crudService.getCitas().subscribe(res => {
       console.log(res)
       this.citas = res.Citas;
-      }, err => console.error(err)
+      }, error => this.errorMessage = error
       );
   }
 
