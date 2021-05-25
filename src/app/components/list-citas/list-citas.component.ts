@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, TemplateRef, ViewChild } from '@angular/core';
 import { CrudService } from './../../service/crud.service';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { Cita } from 'src/app/service/cita';
@@ -12,13 +12,15 @@ export class ListCitasComponent implements OnInit {
 
   deleteModalRef: BsModalRef;
   @ViewChild('deleteModal') deleteModal;
+  //message: string;
+  
+  citaSelecionada: any;
 
   citas: any = [];
 
-  citaSelecionada: any = [];
 
   constructor(private crudService: CrudService, 
-              private modalService: BsModalService) { }
+              private modalService: BsModalService) {}
 
   ngOnInit(): void {
    this.getCita();
@@ -32,18 +34,24 @@ export class ListCitasComponent implements OnInit {
       );
   }
 
-  deleteCita(id) {
-    //console.log(id)
-    this.crudService.deleteCita(id).subscribe(res => {
+  // deleteCita(cita) {
+  //   console.log(cita)
+  //   this.crudService.deleteCita(cita).subscribe(res => {
+  //     console.log(res);
+  //     this.getCita();
+  //   }, err => console.log(err)
+  //   );
+  // }
+
+  onDelete(citas) {
+    console.log(citas)
+    this.citaSelecionada = citas;
+    this.deleteModalRef = this.modalService.show(this.deleteModal, { class: 'modal-sm'});
+    this.crudService.deleteCita(citas).subscribe(res => {
       console.log(res);
       this.getCita();
     }, err => console.log(err)
     );
-  }
-
-  onDelete(citas) {
-    this.citaSelecionada = citas;
-    this.deleteModalRef = this.modalService.show(this.deleteModal, { class: 'modal-sm'});
   }
 
   onConfirmDelete() {
@@ -55,7 +63,7 @@ export class ListCitasComponent implements OnInit {
       },
     );
   }
-
+ 
   onDeclineDelete() {
     this.deleteModalRef.hide();
   }
