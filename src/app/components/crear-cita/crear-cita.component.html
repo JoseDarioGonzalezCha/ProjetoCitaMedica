@@ -3,11 +3,7 @@
 <div class="card" style="width: 50%;">
     <div  class="card-body">
         <h4 class="card-title text-center">Adicionar Cita</h4>
-        
-            <!-- <div class="text-center">
-                <span class="badge bg-danger">Todos os campos são obrigatorios</span>
-            </div> -->
-         
+    
         <form #formulario="ngForm" (ngSubmit)="onSubmit(formulario)"> <!-- [formGroup]="formulario" -->
             <div class="form-group mb-3">
                 <label for="nombre">Nome</label>
@@ -48,11 +44,11 @@
                 </div>
             </div>
             
-            <button type="submit" style="width: 100%;" (click)="createNewCita()" (ngSubmit)="onSubmit" class="btn btn-primary btn-block" [disabled]="!formulario.valid" >Adicionar Cita</button>
-            
+            <button type="submit" style="width: 100%;" (click)="createNewCita()" (ngSubmit)="onSubmit" class="btn btn-primary btn-block" [disabled]="!formulario.valid" >Adicionar Cita</button> 
         </form>
+        <div class="text-center">
+            <span class="badge bg-danger">{{errorMessage}}</span>
+        </div>
     </div>
-    <div class="alert alert-light" role="alert">
-        <p>{{errorMessage}}</p>
-    </div>
+    
 </div>
